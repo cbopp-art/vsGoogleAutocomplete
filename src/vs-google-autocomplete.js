@@ -61,6 +61,14 @@ angular.module('vsGoogleAutocomplete').factory('vsGooglePlaceUtility', function(
 	function getCity(place) {
 		var COMPONENT_TEMPLATE = { locality: 'long_name' },
 			city = getAddrComponent(place, COMPONENT_TEMPLATE);
+		if (!city || city === '') {
+			COMPONENT_TEMPLATE = { sublocality_level_1: 'long_name' };
+			city = getAddrComponent(place, COMPONENT_TEMPLATE);
+		}
+		if (!city || city === '') {
+			COMPONENT_TEMPLATE = { postal_town: 'long_name' };
+			city = getAddrComponent(place, COMPONENT_TEMPLATE);
+		}
 		return city;
 	}
 
