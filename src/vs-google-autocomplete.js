@@ -58,6 +58,12 @@ angular.module('vsGoogleAutocomplete').factory('vsGooglePlaceUtility', function(
 		return street;
 	}
 
+	function getNeighborhood(place) {
+		var COMPONENT_TEMPLATE = { neighborhood: 'long_name' },
+			neighborhood = getAddrComponent(place, COMPONENT_TEMPLATE);
+		return neighborhood;
+	}
+
 	function getCity(place) {
 		var COMPONENT_TEMPLATE = { locality: 'long_name' },
 			city = getAddrComponent(place, COMPONENT_TEMPLATE);

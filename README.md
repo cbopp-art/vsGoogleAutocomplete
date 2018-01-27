@@ -57,7 +57,7 @@ angular.module('yourApp', ['vsGoogleAutocomplete']);
 You can add an options object as attribute parameter, which will restrict autocomplete results.
 
 [<b>Options object</b>](https://developers.google.com/maps/documentation/javascript/places-autocomplete#add_autocomplete) can contain the following properties:
-- types `{Array.<string>}` (In general only a single type is allowed): 
+- types `{Array.<string>}` (In general only a single type is allowed):
   - 'geocode'
   - 'address'
   - 'establishment'
@@ -84,13 +84,14 @@ $scope.options = {
 In example above, autocomplete results will only consist of cities of France.
 
 ## Parsing address components
-You can bind your model with autocomplete address components. 
+You can bind your model with autocomplete address components.
 
 <b>Directives for parsing</b>:
 - <b>`vs-place`</b> - gets [place detail results](https://developers.google.com/maps/documentation/javascript/places#place_details_results) object
 - <b>`vs-place-id`</b> - gets unique identifier denoting place
 - <b>`vs-street-number`</b> - gets street number of place
 - <b>`vs-street`</b> - gets street name of place
+- <b>`vs-neighborhood`</b> - gets neighborhood of place
 - <b>`vs-city`</b> - gets city name of place
 - <b>`vs-state`</b> - gets state name of place
 - <b>`vs-country-short`</b> - gets country iso code of place
@@ -105,17 +106,18 @@ You can bind your model with autocomplete address components.
 <form>
   <input vs-google-autocomplete="options"
          ng-model="address.name"
-         
-         vs-place="address.place" 
+
+         vs-place="address.place"
          vs-place-id="address.components.placeId"
-         vs-street-number="address.components.streetNumber" 
+         vs-street-number="address.components.streetNumber"
          vs-street="address.components.street"
+         vs-neighborhood="address.components.neighborhood"
          vs-city="address.components.city"
          vs-state="address.components.state"
          vs-country-short="address.components.countryCode"
          vs-country="address.components.country"
 	     vs-district = "address.components.district"
-         
+
          name="address"
          type="text">
 </form>
@@ -181,7 +183,7 @@ angular.module('yourApp')
     function validate(place) {
     	// ...
     }
-    	
+
     return validate;
   });
 ```
